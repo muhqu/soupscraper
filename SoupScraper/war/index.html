@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Soup Scraper</title>
+    <style type="text/css">
+    body { background: #eee; }
+    h2 { color: #ccc; }
+    h2 b { color: #22c; }
+    h2 big { color: #22e; }
+    iframe, textarea { background: #fff; border: 1px solid #999; padding: 10px; width: 100%; height: 180px; }
+    iframe { margin:0; padding:0; height: 600px; }
+    </style>
+  </head>
+  <body>
+    <h2><big title="Soup Scraper">SoupScraper</big> = <b>AppEngine</b> + <b>TagSoup</b> + <b>Rhino</b> + <b>EnvJS</b> + <b>SizzleJS</b></h2>
+    <form action="soupscraper" target="result">
+    <fieldset>
+    	<legend>ScrapeRequest</legend>
+    	<input type="text" style="width:100%" name="url" value="http://en.wikipedia.org/wiki/Quake">
+    	<textarea name="scrape">
+{
+  "game" : ["#content",{
+    "name" : ["table.infobox .summary i", "TEXT"],
+    "developers[]" : ["table.infobox tr:has(td a[href=/wiki/Video_game_developer]) td+td a", "TEXT"],
+    "external_links[]" : ["h2:contains(links)+ul li", {
+      "title": ["a.external","TEXT"],
+      "href": ["a.external","@href"],
+    }]
+  }]
+}
+</textarea><br>
+    <input type="submit" value="Submit ScrapeRequest">
+    </fieldset>
+    </form>
+    
+    <fieldset>
+    	<legend>ScrapeResult</legend>
+    	<iframe name="result" src=""></iframe>
+    
+    </fieldset>
+  </body>
+</html>
