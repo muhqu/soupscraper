@@ -10,6 +10,13 @@ h2. It uses...
 * "EnvJS":http://github.com/thatcher/env-js/tree/master - JavaScript lib to simulate Browser Environment
 * "JSON":http://www.json.org/js.html - JSON parser in JavaScript
 * "SizzleJS":http://github.com/jeresig/sizzle - Best CSS Selector Engine you can find... ;-)
+
+h2. There are currently two versions, this one is version 2
+
+* "soupscraper.appspot.com":http://soupscraper.appspot.com -> V1
+* "1.latest.soupscraper.appspot.com":http://1.latest.soupscraper.appspot.com  developed Dec-08 with Python + BeautifulSoup + soupselect.py
+* "2.latest.soupscraper.appspot.com":http://2.latest.soupscraper.appspot.com  *this version* 
+
 h2. Schema
 
 h3. Simple Example
