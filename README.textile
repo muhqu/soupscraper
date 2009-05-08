@@ -1,0 +1,77 @@
+h1. SoupScraper
+
+...is a webservice to "scrape":http://en.wikipedia.org/wiki/Web_scraping from HTML webpages.
+
+h2. It uses...
+
+* "Google AppEngine":http://appengine.google.com/
+* "TagSoup":http://home.ccil.org/~cowan/XML/tagsoup/ - java lib to parse invalid XML (e.g. nasty HTML) 
+* "Rhino":http://www.mozilla.org/rhino/ - JavaScript Engine for Java
+* "EnvJS":http://github.com/thatcher/env-js/tree/master - JavaScript lib to simulate Browser Environment
+* "JSON":http://www.json.org/js.html - JSON parser in JavaScript
+* "SizzleJS":http://github.com/jeresig/sizzle - Best CSS Selector Engine you can find... ;-)
+h2. Schema
+
+h3. Simple Example
+
+URL: http://sizzlejs.com/
+
+bc. { "download_link" : ["p.download.link a","@href"] }
+
+...will output...
+
+bc. {
+   "download_link": "http://github.com/jeresig/sizzle/zipball/master"
+}
+
+h3. A more complex Example:
+
+URL: http://en.wikipedia.org/wiki/Quake
+
+bc. {
+  "game" : ["#content",{
+    "name" : ["table.infobox .summary i", "TEXT"],
+    "developers[]" : ["table.infobox tr:has(td a[href=/wiki/Video_game_developer]) td+td a", "TEXT"],
+    "external_links[]" : ["h2:contains(links)+ul li", {
+      "title": ["a.external","TEXT"],
+      "href": ["a.external","@href"],
+    }]
+  }]
+}
+
+...will output...
+
+bc.  
+{
+   "game": {
+      "name": "Quake",
+      "developers": [
+         "id Software",
+         "Midway Games",
+         "N64",
+         "Lobotomy Software",
+         "SS"
+      ],
+      "external_links": [
+         {
+            "title": "id Software: Quake",
+            "href": "http://www.idsoftware.com/games/quake/quake/"
+         },
+         {
+            "title": "Quake",
+            "href": "http://www.dmoz.org/Games/Video_Games/Shooter/Q/Quake_Series/Quake/"
+         }
+      ]
+   }
+}
+
+
+ 
+h2. Author
+
+(c) 2008-2009 by mathias leppich _aka_ "muhqu":http://github.com/muhqu
+
+!http://www.gravatar.com/avatar.php?gravatar_id=0ad964bc2b83e0977d8f70816eda1c70&r=PG&s=64&default=identicon! 
+
+
+ 
